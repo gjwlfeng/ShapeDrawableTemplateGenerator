@@ -1,0 +1,61 @@
+<idea-plugin version="2">
+  <id>com.zf.androidplugin.shapedrawable_template</id>
+  <name>ShapeDrawable Template Generator</name>
+  <version>1.0</version>
+  <vendor email="903600017@qq.com" url="http://www.yourcompany.com">我的一个美国梦</vendor>
+
+  <description><![CDATA[
+      自动生成ShapeDrawable 文件模板<br>
+
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <ul>
+        <li>选中一个文件夹</li>
+        <li>右键单击，选择"Generate ShapeDrawable Template" 菜单项</li>
+        <li>在选中的文件目录下生成ShapeDrawable成功。</li>
+      </ul><br>
+      <br>
+      <b>Plugin HomePage</b><br/>
+  本插件源码<a href="https://github.com/903600017/ShapeDrawableTemplateGenerator.git" target="_blank">https://github.com/903600017/ShapeDrawableTemplateGenerator.git</a>
+  <br/>
+  <br/>
+  <b>1.0.0</b> (2016/01/15)
+  <ul>
+    <li>基本功能已经完完善，暂未发现bug</li>
+  </ul>
+  <br/>
+  <p>
+      如发现有什么不懂的，用着不顺手的，有bug，有任何问题，迎欢大家来批评，指出。邮箱（903600017@qq.com）。最后，要告诉大家一个秘密，我不会英语，说的不好听的记得用中言文哦。
+  </p>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+
+  </extensions>
+
+  <actions>
+
+
+    <!-- Add your actions here -->
+
+	<action id="com.zf.androidplugin.shapedrawable.template.ShapeDrawableGenertorAction"
+                class="com.zf.androidplugin.shapedrawable.template.ShapeDrawableGenertorAction" text="Generate ShapeDrawable Template"
+                description="Generate ShapeDrawable Template">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="Images.EditExternally"/>
+        </action>
+
+  </actions>
+
+</idea-plugin>
