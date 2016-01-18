@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
@@ -26,7 +27,7 @@ public class ShapeDrawableGenertorAction extends AnAction
 {
     private static final String SUFFIX_XML = ".xml";
     private VirtualFile[] virtualFiles = null;
-    private String shapeDrawabelName = "";
+    private String shapeDrawabelName;
     private static final String TEMPLATEFILENAME = "shape_drawable_template.xml";
 
     @Override
@@ -46,24 +47,30 @@ public class ShapeDrawableGenertorAction extends AnAction
 
             do
             {
-                if ("".equals(shapeDrawabelName.trim()))
+                if (shapeDrawabelName == null)
+                {
+                } else if ("".equals(shapeDrawabelName.trim()))
                 {
                     showInfoDialog("请输入文件名", anActionEvent);
+                } else if (!isValidFileName(shapeDrawabelName))
+                {
+                    showInfoDialog("文件名无效！", anActionEvent);
                 } else if (shapeDrawabelName != null)
                 {
-                    showInfoDialog("该目录下已经有文件", anActionEvent);
+                    showInfoDialog("该目录下已经有文件！", anActionEvent);
                 }
                 shapeDrawabelName = Messages.showInputDialog(project, message, title, Messages.getQuestionIcon());
             }
-            while ("".equals(shapeDrawabelName.trim()) || virtualFiles[0].findChild(shapeDrawabelName.endsWith("SUFFIX_XML") ? shapeDrawabelName : shapeDrawabelName + SUFFIX_XML) != null);
+            while ((shapeDrawabelName != null) && ("".equals(shapeDrawabelName.trim()) || virtualFiles[0].findChild(shapeDrawabelName.endsWith("SUFFIX_XML") ? shapeDrawabelName : shapeDrawabelName + SUFFIX_XML) != null || (!isValidFileName(shapeDrawabelName))));
 
             if (shapeDrawabelName == null)
                 return;
 
-            VirtualFile srcVirtualFile=null;
+
+            VirtualFile srcVirtualFile = null;
             try
             {
-                srcVirtualFile= virtualFiles[0].createChildData(null, shapeDrawabelName.endsWith("SUFFIX_XML") ? shapeDrawabelName : shapeDrawabelName + SUFFIX_XML);
+                srcVirtualFile = virtualFiles[0].createChildData(null, shapeDrawabelName.endsWith("SUFFIX_XML") ? shapeDrawabelName : shapeDrawabelName + SUFFIX_XML);
             } catch (IOException e)
             {
                 showInfoDialog("生成Shape Drawable 模板文件失败", anActionEvent);
@@ -74,7 +81,7 @@ public class ShapeDrawableGenertorAction extends AnAction
 
             final VirtualFile finalSrcVirtualFile = srcVirtualFile;
 
-            WriteCommandAction.runWriteCommandAction(anActionEvent.getProject(), new Runnable()
+            ApplicationManager.getApplication().runWriteAction(new Runnable()
             {
                 @Override
                 public void run()
@@ -129,6 +136,14 @@ public class ShapeDrawableGenertorAction extends AnAction
         virtualFiles = e.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
         if (virtualFiles == null)
             e.getPresentation().setEnabled(false);
+    }
+
+    public static boolean isValidFileName(String fileName)
+    {
+        if (fileName == null || fileName.length() > 255)
+            return false;
+        else
+            return fileName.matches("[^\\s\\\\/:\\*\\?\\\"<>\\|](\\x20|[^\\s\\\\/:\\*\\?\\\"<>\\|])*[^\\s\\\\/:\\*\\?\\\"<>\\|\\.]$");
     }
 
 
