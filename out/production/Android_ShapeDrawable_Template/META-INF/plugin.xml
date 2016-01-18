@@ -17,7 +17,7 @@
       </ul><br>
       <br>
       <b>Plugin HomePage</b><br/>
-  本插件源码<a href="https://github.com/903600017/AndroidSelecctorDrawableGenerator.git" target="_blank">https://github.com/903600017/AndroidSelecctorDrawableGenerator.git</a>
+  本插件源码<a href="https://github.com/903600017/ShapeDrawableTemplateGenerator.git" target="_blank">https://github.com/903600017/ShapeDrawableTemplateGenerator.git</a>
   <br/>
   <br/>
   <b>1.0.0</b> (2016/01/15)
@@ -36,9 +36,8 @@
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+  <!-- uncomment to enable plugin in all products -->
+
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->

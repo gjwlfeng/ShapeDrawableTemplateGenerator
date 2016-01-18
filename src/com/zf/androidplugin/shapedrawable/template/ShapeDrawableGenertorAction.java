@@ -26,7 +26,7 @@ public class ShapeDrawableGenertorAction extends AnAction
 {
     private static final String SUFFIX_XML = ".xml";
     private VirtualFile[] virtualFiles = null;
-    private String shapeDrawabelName = null;
+    private String shapeDrawabelName = "";
     private static final String TEMPLATEFILENAME = "shape_drawable_template.xml";
 
     @Override
@@ -46,7 +46,7 @@ public class ShapeDrawableGenertorAction extends AnAction
 
             do
             {
-                if ("".equals(shapeDrawabelName) && "".equals(shapeDrawabelName.trim()))
+                if ("".equals(shapeDrawabelName.trim()))
                 {
                     showInfoDialog("请输入文件名", anActionEvent);
                 } else if (shapeDrawabelName != null)
