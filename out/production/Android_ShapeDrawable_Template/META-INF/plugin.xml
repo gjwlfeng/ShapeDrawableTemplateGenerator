@@ -1,33 +1,38 @@
 <idea-plugin version="2">
   <id>com.zf.androidplugin.shapedrawable_template</id>
-  <name>ShapeDrawable Template Generator</name>
-  <version>1.0.1</version>
+  <name>Shape Drawable Template Generator</name>
+  <version>1.0.6</version>
   <vendor email="903600017@qq.com" url="http://www.yourcompany.com">我的一个美国梦</vendor>
 
   <description><![CDATA[
-      自动生成ShapeDrawable 文件模板<br>
+      自动生成ShapeDrawable 文件模板（Automatically generate ShapeDrawable document template）<br>
 
     ]]></description>
 
   <change-notes><![CDATA[
       <ul>
-        <li>选中一个文件夹</li>
-        <li>右键单击，选择"Generate ShapeDrawable Template" 菜单项</li>
-        <li>在选中的文件目录下生成ShapeDrawable成功。</li>
+        <li>选中一个文件夹（Select a folder）</li>
+        <li>右键单击，选择"Generate ShapeDrawable Template" 菜单项（Right-click on it, and select the "Generate ShapeDrawable Template" menu item）</li>
+        <li>在选中的文件目录下生成ShapeDrawable成功。（In the selected file directory to generate ShapeDrawable success.）</li>
       </ul><br>
       <br>
       <b>Plugin HomePage</b><br/>
-  本插件源码<a href="https://github.com/903600017/ShapeDrawableTemplateGenerator.git" target="_blank">https://github.com/903600017/ShapeDrawableTemplateGenerator.git</a>
+  本插件源码<a href="https://plugins.jetbrains.com/plugin/8155?pr=androidstudio" target="_blank">https://plugins.jetbrains.com/plugin/8155?pr=androidstudio</a>
   <br/>
   <br/>
   <b>1.0.0</b> (2016/01/15)
   <ul>
     <li>基本功能已经完完善，暂未发现bug</li>
   </ul>
-  <br/>
-  <b>1.0.1</b> (2016/01/15)
+
+  <b>1.0.1</b> (2016/01/18)
   <ul>
     <li>修改了自定义文件名bug</li>
+  </ul>
+   <b>1.0.3</b> (2016/01/18)
+  <ul>
+    <li>加入国际化（Join the internationalization）</li>
+    <li>打开新创建的文件（Open the newly created file）</li>
   </ul>
   <br/>
   <p>
