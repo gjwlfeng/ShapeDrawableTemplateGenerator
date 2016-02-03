@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.zf.androidplugin.shapedrawable_template</id>
   <name>Shape Drawable Template Generator</name>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
   <vendor email="903600017@qq.com" url="http://www.yourcompany.com">我的一个美国梦</vendor>
 
   <description><![CDATA[
@@ -36,7 +36,7 @@
   </ul>
   <br/>
   <p>
-      如发现有什么不懂的，用着不顺手的，有bug，有任何问题，迎欢大家来批评，指出。邮箱（903600017@qq.com）。最后，要告诉大家一个秘密，我不会英语，说的不好听的记得用中言文哦。
+      如发现有什么不懂的，用着不顺手的，有bug，有任何问题，迎欢大家来批评，指出。邮箱（903600017@qq.com）。
   </p>
     ]]>
   </change-notes>
