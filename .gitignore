@@ -45,3 +45,10 @@ Temporary Items
 #
 .zip
 .rar
+
+#排除插件jar
+Android_ShapeDrawable_Template.jar
+
+#排除编译后的中间文件
+/out
+

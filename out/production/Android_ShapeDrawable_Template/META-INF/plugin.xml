@@ -2,7 +2,7 @@
   <id>com.zf.androidplugin.shapedrawable_template</id>
   <name>Shape Drawable Template Generator</name>
   <version>1.0.7</version>
-  <vendor email="903600017@qq.com" url="http://www.yourcompany.com">我的一个美国梦</vendor>
+  <vendor email="903600017@qq.com" url="http://www.yourcompany.com">我有一个梦像雨后彩虹 用所有泪水换来笑容</vendor>
 
   <description><![CDATA[
       自动生成ShapeDrawable 文件模板（Automatically generate ShapeDrawable document template）<br>
@@ -42,7 +42,7 @@
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="141.0"/>
+  <idea-version since-build="162.3"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
