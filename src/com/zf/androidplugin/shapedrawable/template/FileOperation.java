@@ -11,72 +11,56 @@ import java.io.OutputStream;
 /**
  * Created by Lenovo on 2016/1/20.
  */
-public class FileOperation
-{
+public class FileOperation {
 
     //.xml 后缀
     private static final String SUFFIX_XML = ".xml";
     private static String fileName;
 
-    public static void openFile(Project project, VirtualFile xmlVirtualFile)
-    {
+    public static void openFile(Project project, VirtualFile xmlVirtualFile) {
         FileEditorManagerEx fileEditorManagerEx = FileEditorManagerEx.getInstanceEx(project);
-        if (fileEditorManagerEx == null)
-        {
+        if (fileEditorManagerEx == null) {
             return;
         }
-        fileEditorManagerEx.getWindows()[0].setAsCurrentWindow(true);
         fileEditorManagerEx.openFile(xmlVirtualFile, true);
     }
 
-    public static void copyFile(VirtualFile sourceVirtualFile, VirtualFile targetVirtualFile) throws IOException
-    {
+    public static void copyFile(VirtualFile sourceVirtualFile, VirtualFile targetVirtualFile) throws IOException {
         InputStream inputStream = sourceVirtualFile.getInputStream();
         copyFile(inputStream, targetVirtualFile);
     }
 
-    public static void copyFile(InputStream inputStream, VirtualFile targetVirtualFile) throws IOException
-    {
+    public static void copyFile(InputStream inputStream, VirtualFile targetVirtualFile) throws IOException {
         OutputStream outputStream = null;
-        try
-        {
+        try {
             outputStream = targetVirtualFile.getOutputStream(null);
 
-            byte[] by = new byte[1024];
             int length = 0;
-            while ((length = inputStream.read(by)) != -1)
-            {
+            byte[] by = new byte[1024];
+            while ((length = inputStream.read(by)) != -1) {
                 outputStream.write(by, 0, length);
             }
             outputStream.flush();
 
-        } finally
-        {
-            try
-            {
-                if (inputStream != null)
-                {
+        } finally {
+            try {
+                if (inputStream != null) {
                     inputStream.close();
                 }
-            } catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            try
-            {
-                if (outputStream != null)
-                {
+            try {
+                if (outputStream != null) {
                     outputStream.close();
                 }
-            } catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void copyFile(String filePath, VirtualFile targetVirtualFile) throws IOException
-    {
+    public static void copyFile(String filePath, VirtualFile targetVirtualFile) throws IOException {
         InputStream inputStream = FileOperation.class.getResourceAsStream(filePath);
         copyFile(inputStream, targetVirtualFile);
     }
@@ -89,8 +73,7 @@ public class FileOperation
      * @param fileName
      * @return
      */
-    public static boolean isFindChild(VirtualFile virtualFile, String fileName)
-    {
+    public static boolean isFindChild(VirtualFile virtualFile, String fileName) {
         if (!virtualFile.isDirectory())
             return false;
         return virtualFile.findChild(fileName.toLowerCase().endsWith(SUFFIX_XML) ? fileName.toLowerCase() : fileName.toLowerCase() + SUFFIX_XML) != null;
@@ -102,8 +85,7 @@ public class FileOperation
      * @param fileName
      * @return
      */
-    public static String addSuffixXml(String fileName)
-    {
+    public static String addSuffixXml(String fileName) {
         if (fileName == null)
             throw new IllegalArgumentException("File name cannot be empty\n");
         StringBuilder stringBuilder = new StringBuilder(fileName.toLowerCase());
@@ -116,40 +98,37 @@ public class FileOperation
      * @param content
      * @return
      */
-    public static boolean isSuffixXml(String content)
-    {
+    public static boolean isSuffixXml(String content) {
         if (content == null)
             throw new IllegalArgumentException("Parameters cannot be empty\n");
-        return content.toLowerCase().endsWith(SUFFIX_XML) ? true : false;
+        return content.toLowerCase().endsWith(SUFFIX_XML);
     }
 
     /**
      * 创建文件夹
      *
      * @param baseDir
-     * @param childdir
+     * @param childDir
      */
-    public static VirtualFile creteDir(VirtualFile baseDir, String childdir) throws IOException
-    {
+    public static VirtualFile createDir(VirtualFile baseDir, String childDir) throws IOException {
         if (!baseDir.isDirectory())
             throw new IllegalArgumentException("Must be a folder\n");
-        VirtualFile child = baseDir.findChild(childdir);
-        return child == null ? baseDir.createChildDirectory(null, childdir) : child;
+        VirtualFile child = baseDir.findChild(childDir);
+        return child == null ? baseDir.createChildDirectory(null, childDir) : child;
     }
 
     /**
      * 创建文件
      *
      * @param baseDir
-     * @param selectorfile
+     * @param selectorFile
      */
-    public static VirtualFile creteFile(VirtualFile baseDir, String selectorfile) throws IOException
-    {
+    public static VirtualFile creteFile(VirtualFile baseDir, String selectorFile) throws IOException {
         if (!baseDir.isDirectory())
             throw new IllegalArgumentException("Must be a folder\n");
 
-        VirtualFile child = baseDir.findChild(selectorfile);
-        return child == null ? baseDir.createChildData(null, selectorfile) : child;
+        VirtualFile child = baseDir.findChild(selectorFile);
+        return child == null ? baseDir.createChildData(null, selectorFile) : child;
 
     }
 
@@ -159,13 +138,10 @@ public class FileOperation
      * @param fileName
      * @return
      */
-    public static boolean isValidFileName(String fileName)
-    {
-        if (fileName == null || fileName.length() > 255)
-        {
+    public static boolean isValidFileName(String fileName) {
+        if (fileName == null || fileName.length() > 255) {
             return false;
-        } else
-        {
+        } else {
             return fileName.matches("[^\\s\\\\/:\\*\\?\\\"<>\\|](\\x20|[^\\s\\\\/:\\*\\?\\\"<>\\|])*[^\\s\\\\/:\\*\\?\\\"<>\\|\\.]$");
         }
     }

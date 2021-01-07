@@ -1,7 +1,7 @@
-<idea-plugin version="2">
-  <id>com.zf.androidplugin.shapedrawable_template</id>
+<idea-plugin>
+  <id>com.zf.android.plugin.shape_drawable_template</id>
   <name>Shape Drawable Template Generator</name>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
   <vendor email="903600017@qq.com" url="http://www.yourcompany.com">我有一个梦像雨后彩虹 用所有泪水换来笑容</vendor>
 
   <description><![CDATA[
@@ -34,6 +34,10 @@
     <li>加入国际化（Join the internationalization）</li>
     <li>打开新创建的文件（Open the newly created file）</li>
   </ul>
+  <b>1.0.8</b> (2021/01/06)
+  <ul>
+    <li>支持新最的android studio版本（Support the latest Android studio version）</li>
+  </ul>
   <br/>
   <p>
       如发现有什么不懂的，用着不顺手的，有bug，有任何问题，迎欢大家来批评，指出。邮箱（903600017@qq.com）。
@@ -42,21 +46,18 @@
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="162.3"/>
+  <idea-version since-build="201"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
-  <!-- uncomment to enable plugin in all products
+  <!-- uncomment to enable plugin in all products-->
+<!--  <depends>com.intellij.modules.java</depends>-->
   <depends>com.intellij.modules.androidstudio</depends>
-
-
--->
-
 
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
-
+    <notificationGroup id="ShapeDrawableTemplateGenerator" displayType="BALLOON" key="notification.group.name"/>
   </extensions>
 
   <actions>
@@ -64,11 +65,11 @@
 
     <!-- Add your actions here -->
 
-	<action id="com.zf.androidplugin.shapedrawable.template.ShapeDrawableGenertorAction"
-                class="com.zf.androidplugin.shapedrawable.template.ShapeDrawableGenertorAction" text="Generate ShapeDrawable Template"
-                description="Generate ShapeDrawable Template">
-            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="Images.EditExternally"/>
-        </action>
+    <action id="com.zf.androidplugin.shapedrawable.template.ShapeDrawableGenerateAction"
+            class="com.zf.androidplugin.shapedrawable.template.ShapeDrawableGenerateAction" text="Generate ShapeDrawable Template"
+            description="Generate shapeDrawable template">
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="Images.EditExternally"/>
+    </action>
 
   </actions>
 
